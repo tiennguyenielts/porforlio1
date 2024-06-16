@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Toast tutorial</title>
+        <style>
+            #toast {
+                min-width: 300px;
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                margin-left: -125%px;
+                background: #333;
+                padding:15px;
+                color: white;
+                text-align: center;
+                z-index: 1;
+                font-size: 18px;
+                visibility: hidden;
+                box-shadow: 0px opx 100px #000;
+            }
+            #toast.display{
+                visibility: visible;
+                animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+            }
+            @keyframes fadeIn{
+                from{
+                    bottom: 0;
+                    opacity: 0;
+                }
+                to {
+                    bottom: 30px;
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeOut{
+                from{
+                    bottom: 30px;
+                    opacity: 1;
+                }
+                to {
+                    bottom: 0;
+                    opacity: 0;
+                }
+                
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Toast tutorial</h1>
+        <button onclick="showToast('Hello this is button text')">Click me</button>
+        <div id="toast">This is our custom Toast text</div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script>
+            function showToast(content) {
+                $("#toast").addClass("display");
+                $("#toast").html(content);
+                setTimeout(() => {$("#toast").removeClass("display");
+            }, 2000);
+            }
+        </script>
+    </body>
+</html>
